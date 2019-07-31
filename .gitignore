@@ -1,6 +1,6 @@
 .idea
 /*/target/
-!/*/.mvn/wrapper/maven-wrapper.jar
+/*/.mvn/
 
 ### STS ###
 /*/.apt_generated
