@@ -1,5 +1,6 @@
 package com.gara.springcloudconfigclient;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringCloudConfigClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCloudConfigClientApplication.class, args);
+//		SpringApplication.run(SpringCloudConfigClientApplication.class, args);
+
+		SpringApplication springApplication = new SpringApplication(SpringCloudConfigClientApplication.class);
+		springApplication.setBannerMode(Banner.Mode.OFF);
+		springApplication.run(args);
 	}
 
 }
