@@ -4,8 +4,17 @@ server:
 spring:
   application:
     name: eureka-client
-
+#  cloud:
+#      client:
+#          ipAddress: 127.0.0.1
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1001/eureka/
+
+#  Actuator Security 要求必须打开需要expose的endpoints，默认打开health and info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

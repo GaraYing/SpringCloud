@@ -1,6 +1,9 @@
 spring:
   application:
     name: eureka-consumer
+#  cloud:
+#    client:
+#      ipAddress: 127.0.0.1
 server:
   port: 2101
 eureka:
