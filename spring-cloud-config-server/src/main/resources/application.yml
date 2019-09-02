@@ -5,4 +5,5 @@ spring:
     config:
       server:
         git:
-          uri: file:///D:\GIT\config-repo
+          uri: file:///D:/GIT/SpringCloud
+          force-pull: true
