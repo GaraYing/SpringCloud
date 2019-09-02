@@ -7,3 +7,4 @@ spring:
         git:
           uri: file:///D:/GIT/SpringCloud
           force-pull: true
+          skip-ssl-validation: true
