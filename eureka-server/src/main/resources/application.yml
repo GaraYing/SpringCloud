@@ -9,8 +9,11 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
+#    取消服务器自我注册
     registerWithEureka: false
+#    注册中心服务器，没有必要不需要检索服务
     fetchRegistry: false
+#   Eureka Server服务URL 用户客户端注册
     serviceUrl:
       defaultZone: http://127.0.0.1:${server.port}/eureka/
 spring:
