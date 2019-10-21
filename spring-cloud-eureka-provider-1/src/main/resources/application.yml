@@ -1,17 +1,16 @@
 server:
-  port: 1002
+  port: 8001
 
 spring:
   application:
-    name: eureka-client
+    name: spring-cloud-eureka-provider
 eureka:
-  instance:
-    hostname: 127.0.0.1
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:1001/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+      defaultZone: http://127.0.0.1:1001/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
 #  Actuator Security 要求必须打开需要expose的endpoints，默认打开health and info
 management:
   endpoints:
