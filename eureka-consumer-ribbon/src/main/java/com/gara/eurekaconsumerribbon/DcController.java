@@ -1,8 +1,7 @@
 package com.gara.eurekaconsumerribbon;
 
+import com.netflix.hystrix.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +37,6 @@ public class DcController {
 //        System.out.println("URL: " + url);
 //        return restTemplate.getForObject(url, String.class);
 
-        return restTemplate.getForObject("http://eureka-client/dc", String.class);
+        return restTemplate.getForObject("http://spring-cloud-eureka-provider/dc", String.class);
     }
 }

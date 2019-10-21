@@ -10,3 +10,14 @@ server:
 spring:
   application:
     name: service-feign
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000

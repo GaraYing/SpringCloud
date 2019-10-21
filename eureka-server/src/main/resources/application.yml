@@ -1,11 +1,19 @@
 # 通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
 # 在默认情况下erureka server也是一个eureka client ,必须要指定一个 server
+# Eureka注册中心高可用配置
+spring:
+  profiles:
+    active: peer1
+---
 server:
   port: 1001
-
+spring:
+  application:
+    name: eurka-server
+  profiles: peer1
 eureka:
   instance:
-#    hostname: 127.0.0.1
+    hostname: 127.0.0.1
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
@@ -15,7 +23,25 @@ eureka:
     fetchRegistry: false
 #   Eureka Server服务URL 用户客户端注册
     serviceUrl:
-      defaultZone: http://127.0.0.1:${server.port}/eureka/
+#      defaultZone: http://127.0.0.1:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:9001/eureka/
+---
+server:
+  port: 9001
 spring:
   application:
     name: eurka-server
+  profiles: peer2
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+#    取消服务器自我注册
+    registerWithEureka: false
+#    注册中心服务器，没有必要不需要检索服务
+    fetchRegistry: false
+#   Eureka Server服务URL 用户客户端注册
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:1001/eureka/
