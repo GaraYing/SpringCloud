@@ -1,1 +1,23 @@
-
+spring:
+  application:
+    name: service-api-gateway
+server:
+  port: 8050
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:1001/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+# 下面整个树都非必须，如果不配置，将默认使用 http://GATEWAY:GATEWAY_PORT/
+# 想要访问的Eureka服务id的小写 路由到：http://想要访问的Eureka服务id
+# 的小写:该服务端口
+zuul:
+  routes:
+# 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写
+    eureka_client:
+# 映射的路径 http://192.168.60.179:8050/ec/hi 等价于 http://192.168.60.179:8050/eureka-client/hi
+      path: /ec/**
+      service-id: eureka-client # service-instance-id
+# 不暴露哪些服务
+  ignored-services: http://${eureka.instance.hostname}:2101/eureka
