@@ -13,4 +13,9 @@
      
 5. `ConfigurableApplicationContext`
 
-5. `AbstractApplicationContext` onFresh()核心方法
+6. `AbstractApplicationContext` onFresh()核心方法
+
+## eureka client 
+Eureka 客户端 `Eureka Client` 关联多个`Application`集合，一个应用`Application`关联多个实例`InstanceInfo`
+Eureka 的应用信息获取的方式; 拉模式
+Eureka 的应用信息上报的方式：推模式
