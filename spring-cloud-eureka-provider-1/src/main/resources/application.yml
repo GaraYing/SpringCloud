@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: ${random.int[7070,7079]}
 
 spring:
   application:
@@ -11,6 +11,7 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: 127.0.0.1
 #  Actuator Security 要求必须打开需要expose的endpoints，默认打开health and info
 management:
   endpoints:
