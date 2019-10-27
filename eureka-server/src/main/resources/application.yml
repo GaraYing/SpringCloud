@@ -4,6 +4,12 @@
 spring:
   profiles:
     active: peer1
+management:
+  endpoint:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 ---
 server:
   port: 1001
