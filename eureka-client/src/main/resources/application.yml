@@ -10,8 +10,13 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
+#  健康检查
+    healthcheck:
+      enabled: true
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:1001/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+#    refresh:
+#      enable: true
 #  Actuator Security 要求必须打开需要expose的endpoints，默认打开health and info
 management:
   endpoints:

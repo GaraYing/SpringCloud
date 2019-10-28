@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///D:/GIT/SpringCloud
+          uri: https://github.com/GaraYing/config-repo
 #          force-pull: true
           skip-ssl-validation: true
 #          force-pull: true
