@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DcController {
 
-//    @Autowired
-//    private HomeService homeService;
+    @Autowired
+    private HomeService homeService;
 
     @GetMapping("/my-name")
     public String getName(){
-        return "succ";
-//        return homeService.testGetName();
+//        return "succ";
+        return homeService.testGetName();
     }
 }

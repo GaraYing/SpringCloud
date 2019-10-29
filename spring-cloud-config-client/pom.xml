@@ -6,6 +6,7 @@
 		<groupId>com.gara</groupId>
 		<artifactId>eureka-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath/>
 	</parent>
 	<groupId>com.gara</groupId>
 	<artifactId>spring-cloud-config-client</artifactId>

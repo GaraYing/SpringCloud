@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @createTime: 2019-10-28 17:42
  * @Version: 1.0
  **/
-//@Service
+@Service
 public class HomeServiceImpl implements HomeService{
 
     @Value("${my.name}")
