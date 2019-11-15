@@ -31,6 +31,7 @@ eureka:
     serviceUrl:
 #      defaultZone: http://127.0.0.1:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:9001/eureka/
+    instanceInfoReplicationIntervalSeconds: 10
 ---
 server:
   port: 9001
@@ -51,3 +52,4 @@ eureka:
 #   Eureka Server服务URL 用户客户端注册
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:1001/eureka/
+    instanceInfoReplicationIntervalSeconds: 10

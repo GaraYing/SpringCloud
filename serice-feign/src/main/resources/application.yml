@@ -5,11 +5,23 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: 127.0.0.1
 server:
   port: 3001
+#  tomcat:
+#    max-http-post-size:
 spring:
   application:
     name: service-feign
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 50MB
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+
+
 hystrix:
   command:
     default:
@@ -17,6 +29,7 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
+
 
 ribbon:
   ReadTimeout: 5000

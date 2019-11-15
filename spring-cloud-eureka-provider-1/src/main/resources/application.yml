@@ -1,9 +1,14 @@
 server:
-  port: ${random.int[7070,7079]}
-
+  port: 7777
+#  port: ${random.int[7070,7079]}
 spring:
   application:
     name: spring-cloud-eureka-provider
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
 eureka:
   client:
     serviceUrl:

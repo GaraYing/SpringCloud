@@ -1,8 +1,9 @@
 package com.gara.sericefeign.service;
 
+import com.gara.sericefeign.config.FeignConfiguration;
+import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @description:
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @Version: 1.0
  **/
 @Component
-@FeignClient(name = "spring-cloud-eureka-provider",fallbackFactory = HystrixClientFallbackFactory.class)
+@FeignClient(name = "spring-cloud-eureka-provider", configuration = FeignConfiguration.class ,fallbackFactory = HystrixClientFallbackFactory.class)
 public interface Dc2Service {
 
-    @GetMapping("/dc")
+    @RequestLine("GET /dc")
     String consumer();
 }
