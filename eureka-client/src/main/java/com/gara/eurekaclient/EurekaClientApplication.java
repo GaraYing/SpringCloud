@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -63,6 +64,7 @@ public class EurekaClientApplication {
         }
     }
 
+    @Bean
     @ConditionalOnProperty(value = "spring.boot.web.server.customize.test", havingValue = "true")
     public ConfigurableServletWebServerFactory webServerFactory() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();

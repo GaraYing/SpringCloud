@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @Version: 1.0
 **/
 
-@Component
+//@Component
 public class CustomizationBean implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
 
     /**

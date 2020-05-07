@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: eureka-client
+  boot:
+    web:
+      server:
+        customize:
+          test: true
 eureka:
   instance:
     hostname: 127.0.0.1
