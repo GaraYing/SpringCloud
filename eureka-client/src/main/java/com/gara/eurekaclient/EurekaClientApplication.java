@@ -11,6 +11,7 @@ import org.springframework.cloud.bootstrap.config.PropertySourceLocator;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -29,6 +30,7 @@ import java.util.Map;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @RestController
+@ComponentScan(basePackages = "com.gara")
 public class EurekaClientApplication {
 
     public static void main(String[] args) {

@@ -5,6 +5,8 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @EnableEurekaServer

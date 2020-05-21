@@ -1,5 +1,6 @@
 package com.gara.eurekaclient;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class DcController {
     @Autowired
     DiscoveryClient discoveryClient;
 
+    @ApiOperation(value = "测试")
     @GetMapping("/dc")
     public String dc() {
         String services = "Sevice: " + discoveryClient.getServices();
