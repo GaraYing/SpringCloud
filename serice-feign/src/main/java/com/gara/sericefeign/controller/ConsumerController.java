@@ -1,10 +1,11 @@
 package com.gara.sericefeign.controller;
 
-import com.gara.dto.FileDTO;
 import com.gara.sericefeign.req.FileDesc;
 import com.gara.sericefeign.service.Dc2Service;
 import com.gara.sericefeign.service.DcService;
+import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -31,10 +33,18 @@ public class ConsumerController {
     @Autowired
     private Dc2Service dc2Service;
 
-    @HystrixCommand(fallbackMethod = "defaultMethod")
+    @HystrixCommand(fallbackMethod = "defaultMethod",
+            commandProperties = {
+                @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
+    })
     @GetMapping("feign/consumer")
     public String testFeign(){
         return dcService.consumer();
+    }
+
+    @GetMapping("testHystrixCommand")
+    public String testHystrixCommand() {
+        return new TestCommand().execute();
     }
 
     private String defaultMethod() {
@@ -81,6 +91,31 @@ public class ConsumerController {
             e.printStackTrace();
         }
         return excelFile;
+    }
+
+    /**
+     * 编程方式实现HystrixCommand
+     */
+    private class TestCommand extends com.netflix.hystrix.HystrixCommand<String>{
+
+        protected TestCommand() {
+            super(HystrixCommandGroupKey.Factory.asKey("HelloWorld"), 100);
+        }
+
+        @Override
+        protected String run() throws Exception {
+            int value = new Random().nextInt(200);
+
+            System.out.println("TestHystrixCommand() costs " + value  + " ms. ");
+
+            Thread.sleep(1000);
+            return "Hello World";
+        }
+
+        @Override
+        protected String getFallback(){
+            return ConsumerController.this.defaultMethod();
+        }
     }
 }
 

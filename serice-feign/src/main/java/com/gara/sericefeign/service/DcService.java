@@ -1,19 +1,11 @@
 package com.gara.sericefeign.service;
 
-import com.gara.dto.FileDTO;
 import com.gara.sericefeign.config.FeignConfiguration;
 import com.gara.sericefeign.req.FileDesc;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import feign.codec.Encoder;
-import feign.form.spring.SpringFormEncoder;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.cloud.openfeign.support.SpringEncoder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 

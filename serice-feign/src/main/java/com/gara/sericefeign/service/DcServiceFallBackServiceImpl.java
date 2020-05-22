@@ -1,6 +1,5 @@
 package com.gara.sericefeign.service;
 
-import com.gara.dto.FileDTO;
 import com.gara.sericefeign.req.FileDesc;
 import org.springframework.web.multipart.MultipartFile;
 

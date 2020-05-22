@@ -24,3 +24,6 @@ Eureka 的应用信息上报的方式：推模式
     Spring 实现 `SimpleClientHttpRequestFactory`
     HttpClient 实现 `HttpComponentsClientHttpRequestFactory`
     OkHttp 实现 `OkHttp3ClientHttpRequestFactory`
+
+### 服务降级
+    服务能降级即服务容忍不可用
