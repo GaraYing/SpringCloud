@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
 public class EurekaServerApplication {
 
     public static void main(String[] args) {
-//        SpringApplication.run(EurekaServerApplication.class, args);
-        new SpringApplicationBuilder(EurekaServerApplication.class).web(WebApplicationType.SERVLET).run(args);
+        SpringApplication.run(EurekaServerApplication.class, args);
+//        new SpringApplicationBuilder(EurekaServerApplication.class).web(WebApplicationType.SERVLET).run(args);
     }
 }

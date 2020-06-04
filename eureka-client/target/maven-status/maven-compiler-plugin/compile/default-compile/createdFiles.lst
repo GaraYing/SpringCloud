@@ -1,0 +1,5 @@
+com\gara\eurekaprovider\CustomizationBean.class
+com\gara\eurekaprovider\ClientConfig.class
+com\gara\eurekaprovider\EurekaClientApplication$MyPropertySourceLocator.class
+com\gara\eurekaprovider\EurekaClientApplication.class
+com\gara\eurekaprovider\DcController.class

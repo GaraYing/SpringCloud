@@ -1,0 +1,36 @@
+server:
+  port: 1002
+
+spring:
+  application:
+    name: eureka-client
+  boot:
+    web:
+      server:
+        customize:
+          test: true
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:1001/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+#  Actuator Security 要求必须打开需要expose的endpoints，默认打开health and info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+swagger:
+  enable: true
+  basePackage: "com.gara"
+  api-info:
+    contact:
+      email: "xx@qq.com"
+      name: "xx"
+      url: ''
+    description: "测试"
+    title: "测试"
+    version: "1.0"

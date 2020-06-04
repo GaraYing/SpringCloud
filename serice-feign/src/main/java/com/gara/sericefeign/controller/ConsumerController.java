@@ -1,17 +1,18 @@
 package com.gara.sericefeign.controller;
 
+import com.gara.eurekaprovider.req.FileDTO;
+import com.gara.eurekaprovider.service.Dc2Service;
+import com.gara.eurekaprovider.service.DcService;
 import com.gara.sericefeign.req.FileDesc;
-import com.gara.sericefeign.service.Dc2Service;
-import com.gara.sericefeign.service.DcService;
+import com.gara.sericefeign.service.ConsumerService;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import io.swagger.annotations.ApiModel;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -26,19 +27,19 @@ import java.util.UUID;
  * @Version: 1.0
  **/
 @RestController
+@RequestMapping(value = "feign")
+@ApiModel(description = "消费端控制器")
 public class ConsumerController {
 
     @Autowired
-    private DcService dcService;
-    @Autowired
-    private Dc2Service dc2Service;
+    private ConsumerService dcService;
 
     @HystrixCommand(fallbackMethod = "defaultMethod",
             commandProperties = {
-                @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
-    })
+                    @HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE")
+            })
     @GetMapping("feign/consumer")
-    public String testFeign(){
+    public String testFeign() {
         return dcService.consumer();
     }
 
@@ -51,29 +52,31 @@ public class ConsumerController {
         return "HystrixCommand Service Failed";
     }
 
-    @GetMapping("feign/consumer2")
-    public String testFeign2(){
-        return dc2Service.consumer();
-    }
+//    @GetMapping("feign/consumer2")
+//    public String testFeign2() {
+//        return dc2Service.consumer();
+//    }
 
-    @PostMapping(value = "uploadFile")
-    public String uploadFile(@RequestParam(value = "file") MultipartFile file){
+    @PostMapping(value = "uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadFile(@RequestParam(value = "file") MultipartFile file) {
         return dcService.uploadFile(multipartFile2File(file));
     }
 
     @PostMapping(value = "uploadMultipartFile")
-    public String uploadMultipartFile(@RequestParam(value = "file") MultipartFile file){
+    public String uploadMultipartFile(@RequestPart(value = "file") MultipartFile file) {
         return dcService.uploadMultipartFile(file);
     }
 
     @PostMapping(value = "uploadFileWithParams")
-    public String uploadFileWithParams(@RequestParam(value = "file") MultipartFile file, @RequestParam String fileDesc){
+    public String uploadFileWithParams(@RequestPart(value = "file") MultipartFile file, @RequestParam String fileDesc) {
         return dcService.uploadFileWithParams(file, fileDesc);
     }
 
     @PostMapping(value = "uploadFileWithDTO", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String uploadFileWithDTO(@RequestParam(value = "file") MultipartFile file, FileDesc req){
-        return dcService.uploadFileWithDTO(file, req);
+    public String uploadFileWithDTO(@RequestPart(value = "file") MultipartFile file, FileDesc req) {
+        FileDTO fileDTO = new FileDTO();
+        BeanUtils.copyProperties(req, fileDTO);
+        return dcService.uploadFileWithDTO(file, fileDTO);
     }
 
     private File multipartFile2File(MultipartFile multipartFile) {
@@ -96,7 +99,7 @@ public class ConsumerController {
     /**
      * 编程方式实现HystrixCommand
      */
-    private class TestCommand extends com.netflix.hystrix.HystrixCommand<String>{
+    private class TestCommand extends com.netflix.hystrix.HystrixCommand<String> {
 
         protected TestCommand() {
             super(HystrixCommandGroupKey.Factory.asKey("HelloWorld"), 100);
@@ -106,14 +109,14 @@ public class ConsumerController {
         protected String run() throws Exception {
             int value = new Random().nextInt(200);
 
-            System.out.println("TestHystrixCommand() costs " + value  + " ms. ");
+            System.out.println("TestHystrixCommand() costs " + value + " ms. ");
 
             Thread.sleep(1000);
             return "Hello World";
         }
 
         @Override
-        protected String getFallback(){
+        protected String getFallback() {
             return ConsumerController.this.defaultMethod();
         }
     }

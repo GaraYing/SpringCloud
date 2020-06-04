@@ -1,0 +1,4 @@
+com\gara\springcloudconfigcommon\config\ApiInfoBuilder.class
+com\gara\springcloudconfigcommon\config\SwaggerConfig.class
+com\gara\springcloudconfigcommon\CommonConfig.class
+com\gara\springcloudconfigcommon\config\ContactBuilder.class
