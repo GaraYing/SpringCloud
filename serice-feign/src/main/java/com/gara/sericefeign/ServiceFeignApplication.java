@@ -10,8 +10,8 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(scanBasePackages = "com.gara")
+@EnableFeignClients(basePackages = "com.gara")
 @EnableDiscoveryClient
-@EnableFeignClients
 @EnableHystrix
 // 相当于@EnableHystrix + springCloud 相关功能
 @EnableCircuitBreaker

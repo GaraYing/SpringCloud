@@ -1,8 +1,6 @@
 package com.gara.sericefeign.controller;
 
 import com.gara.eurekaprovider.req.FileDTO;
-import com.gara.eurekaprovider.service.Dc2Service;
-import com.gara.eurekaprovider.service.DcService;
 import com.gara.sericefeign.req.FileDesc;
 import com.gara.sericefeign.service.ConsumerService;
 import com.netflix.hystrix.HystrixCommandGroupKey;
@@ -32,7 +30,7 @@ import java.util.UUID;
 public class ConsumerController {
 
     @Autowired
-    private ConsumerService dcService;
+    private ConsumerService consumerService;
 
     @HystrixCommand(fallbackMethod = "defaultMethod",
             commandProperties = {
@@ -40,7 +38,7 @@ public class ConsumerController {
             })
     @GetMapping("feign/consumer")
     public String testFeign() {
-        return dcService.consumer();
+        return consumerService.consumer();
     }
 
     @GetMapping("testHystrixCommand")
@@ -59,24 +57,24 @@ public class ConsumerController {
 
     @PostMapping(value = "uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uploadFile(@RequestParam(value = "file") MultipartFile file) {
-        return dcService.uploadFile(multipartFile2File(file));
+        return consumerService.uploadFile(multipartFile2File(file));
     }
 
     @PostMapping(value = "uploadMultipartFile")
     public String uploadMultipartFile(@RequestPart(value = "file") MultipartFile file) {
-        return dcService.uploadMultipartFile(file);
+        return consumerService.uploadMultipartFile(file);
     }
 
     @PostMapping(value = "uploadFileWithParams")
     public String uploadFileWithParams(@RequestPart(value = "file") MultipartFile file, @RequestParam String fileDesc) {
-        return dcService.uploadFileWithParams(file, fileDesc);
+        return consumerService.uploadFileWithParams(file, fileDesc);
     }
 
     @PostMapping(value = "uploadFileWithDTO", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String uploadFileWithDTO(@RequestPart(value = "file") MultipartFile file, FileDesc req) {
         FileDTO fileDTO = new FileDTO();
         BeanUtils.copyProperties(req, fileDTO);
-        return dcService.uploadFileWithDTO(file, fileDTO);
+        return consumerService.uploadFileWithDTO(file, fileDTO);
     }
 
     private File multipartFile2File(MultipartFile multipartFile) {

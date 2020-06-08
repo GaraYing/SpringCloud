@@ -62,16 +62,6 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-                <!--<exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.cloud</groupId>
-                        <artifactId>spring-cloud-starter-openfeign</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>io.github.openfeign</groupId>
-                        <artifactId>feign-core</artifactId>
-                    </exclusion>
-                </exclusions>-->
             </dependency>
         </dependencies>
     </dependencyManagement>

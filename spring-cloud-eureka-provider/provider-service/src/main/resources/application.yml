@@ -9,6 +9,8 @@ spring:
       enabled: true
       max-file-size: 50MB
       max-request-size: 50MB
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     serviceUrl:
@@ -25,3 +27,12 @@ management:
         include: '*'
 swagger:
   enable: true
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+logging:
+  level:
+    com:
+      gara: DEBUG

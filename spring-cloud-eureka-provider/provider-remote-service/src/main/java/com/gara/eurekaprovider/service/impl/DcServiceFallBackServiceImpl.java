@@ -1,6 +1,7 @@
-package com.gara.eurekaprovider.service;
+package com.gara.eurekaprovider.service.impl;
 
 import com.gara.eurekaprovider.req.FileDTO;
+import com.gara.eurekaprovider.service.DcService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +14,7 @@ import java.io.File;
  * @Version: 1.0
  **/
 @Component
-public class DcServiceFallBackServiceImpl implements DcService{
+public class DcServiceFallBackServiceImpl implements DcService {
     @Override
     public String consumer() {
         return "Get Service Failed";

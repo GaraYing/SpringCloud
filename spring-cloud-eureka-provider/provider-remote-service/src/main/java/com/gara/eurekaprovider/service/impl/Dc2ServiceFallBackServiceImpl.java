@@ -1,10 +1,9 @@
-package com.gara.eurekaprovider.service;
+package com.gara.eurekaprovider.service.impl;
 
+import com.gara.eurekaprovider.service.Dc2Service;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
 public class Dc2ServiceFallBackServiceImpl implements Dc2Service {
 
     private Throwable cause;

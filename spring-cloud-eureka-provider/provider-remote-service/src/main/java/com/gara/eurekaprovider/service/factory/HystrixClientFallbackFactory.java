@@ -1,5 +1,7 @@
-package com.gara.eurekaprovider.service;
+package com.gara.eurekaprovider.service.factory;
 
+import com.gara.eurekaprovider.service.Dc2Service;
+import com.gara.eurekaprovider.service.impl.Dc2ServiceFallBackServiceImpl;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 

@@ -21,7 +21,6 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-
 hystrix:
   command:
     default:
@@ -37,3 +36,8 @@ ribbon:
 
 swagger:
   enable: true
+# print log
+logging:
+  level:
+    com:
+      gara: DEBUG

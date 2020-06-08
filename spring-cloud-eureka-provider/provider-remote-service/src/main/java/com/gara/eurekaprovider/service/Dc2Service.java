@@ -1,6 +1,7 @@
 package com.gara.eurekaprovider.service;
 
 import com.gara.eurekaprovider.config.FeignConfiguration;
+import com.gara.eurekaprovider.service.factory.HystrixClientFallbackFactory;
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 
