@@ -1,8 +1,0 @@
-com\gara\eurekaprovider\service\Dc2Service.class
-com\gara\eurekaprovider\service\Dc2ServiceFallBackServiceImpl.class
-com\gara\eurekaprovider\service\DcServiceFallBackServiceImpl.class
-com\gara\eurekaprovider\service\HystrixClientFallbackFactory.class
-com\gara\eurekaprovider\config\FeignConfiguration.class
-com\gara\eurekaprovider\config\FeignFormEncoder.class
-com\gara\eurekaprovider\req\FileDTO.class
-com\gara\eurekaprovider\service\DcService.class

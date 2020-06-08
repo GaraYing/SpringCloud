@@ -1,8 +1,0 @@
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\config\FeignFormEncoder.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\service\HystrixClientFallbackFactory.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\service\Dc2Service.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\req\FileDTO.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\service\Dc2ServiceFallBackServiceImpl.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\config\FeignConfiguration.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\service\DcService.java
-D:\GIT\SpringCloud\spring-cloud-eureka-provider\provider-remote-service\src\main\java\com\gara\eurekaprovider\service\DcServiceFallBackServiceImpl.java
