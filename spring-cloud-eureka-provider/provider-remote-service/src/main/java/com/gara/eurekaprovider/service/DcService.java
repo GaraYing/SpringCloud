@@ -17,7 +17,7 @@ import java.io.File;
  * @createTime: 2019-10-21 14:42
  * @Version: 1.0
  **/
-@FeignClient(name = "spring-cloud-eureka-provider",path = "/provider", configuration = FeignConfiguration.class,  fallback = DcServiceFallBackServiceImpl.class)
+@FeignClient(name = "spring-cloud-eureka-provider", path = "/provider", contextId = "dc", configuration = FeignConfiguration.class, fallback = DcServiceFallBackServiceImpl.class)
 public interface DcService {
 
     @RequestLine("GET /dc")

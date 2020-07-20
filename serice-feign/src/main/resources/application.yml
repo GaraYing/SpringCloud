@@ -36,6 +36,10 @@ ribbon:
 
 swagger:
   enable: true
+
+feign:
+  log:
+    enabled: true
 # print log
 logging:
   level:

@@ -9,8 +9,8 @@ spring:
       enabled: true
       max-file-size: 50MB
       max-request-size: 50MB
-  main:
-    allow-bean-definition-overriding: true
+#  main:
+#    allow-bean-definition-overriding: true # 支持bean名称覆盖，如果FeignClint 指定不同contextId可不设置该属性
 eureka:
   client:
     serviceUrl:
@@ -27,12 +27,21 @@ management:
         include: '*'
 swagger:
   enable: true
+
 feign:
   hystrix:
     enabled: true
   okhttp:
     enabled: true
+  log:
+    enabled: true
 logging:
   level:
     com:
       gara: DEBUG
+
+
+# check for updated list of servers every 10 seconds
+spring-cloud-eureka-provider:
+  ribbon:
+    ServerListRefreshInterval: 10000
