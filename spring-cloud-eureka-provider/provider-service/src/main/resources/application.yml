@@ -35,6 +35,9 @@ feign:
     enabled: true
   log:
     enabled: true
+  client:
+    name: spring-cloud-eureka-provider
+    url: ${eureka.instance.instance-id}
 logging:
   level:
     com:

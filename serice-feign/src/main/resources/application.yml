@@ -21,7 +21,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-hystrix:
+hystrix
   command:
     default:
       execution:
@@ -40,6 +40,8 @@ swagger:
 feign:
   log:
     enabled: true
+  client:
+    url: http://192.168.30.192:7777
 # print log
 logging:
   level:
