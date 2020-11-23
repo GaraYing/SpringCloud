@@ -9,7 +9,7 @@ public class RestTemplateDemo {
 
     public static void main(String[] args) {
         RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-        Map<String, Object> data = restTemplate.getForObject("http://localhost:1001/actuator/env", Map.class);
+        Map<String, Object> data = restTemplate.getForObject("http://localhost:9002/actuator/env", Map.class);
 
         System.out.println(data);
     }

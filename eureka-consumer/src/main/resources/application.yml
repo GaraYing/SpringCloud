@@ -13,7 +13,7 @@ eureka:
   client:
     serviceUrl:
 #      如果Eureka客户端应用配置了多个Eureka注册服务器，那么默认情况只有第一台可用的服务器，存在注册信息
-      defaultZone: http://${eureka.instance.hostname}:1001/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:9002/eureka/,http://${eureka.instance.hostname}:9001/eureka/
 #    调整注册信息的获取时间，默认值为30秒
     registry-fetch-interval-seconds: 5
 #   调整客户端应用状态信息上报的周期
