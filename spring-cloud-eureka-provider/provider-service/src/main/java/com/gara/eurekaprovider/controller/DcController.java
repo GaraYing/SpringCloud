@@ -1,6 +1,8 @@
-package com.gara.eurekaprovider;
+package com.gara.eurekaprovider.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.gara.eurekaprovider.CustomerRepository;
+import com.gara.eurekaprovider.model.Customer;
 import com.gara.eurekaprovider.req.FileDTO;
 import io.swagger.annotations.ApiModel;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,9 @@ public class DcController {
     @Autowired
     DiscoveryClient discoveryClient;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     @Value("${server.port}")
     String port;
 
@@ -55,4 +60,10 @@ public class DcController {
         log.info("fileDTO: "  +  JSON.toJSONString(fileDTO));
         return "server provided with ===>" + file.getOriginalFilename() + " and desc is " + fileDTO.toString();
     }
+
+    @GetMapping("customer/{id}")
+    public Customer queryCustomerById(@PathVariable(value = "id") long id){
+        return customerRepository.findById(id);
+    }
+
 }

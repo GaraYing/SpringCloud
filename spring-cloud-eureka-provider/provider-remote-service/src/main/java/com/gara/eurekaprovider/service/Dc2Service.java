@@ -2,6 +2,7 @@ package com.gara.eurekaprovider.service;
 
 import com.gara.eurekaprovider.config.FeignConfiguration;
 import com.gara.eurekaprovider.service.factory.HystrixClientFallbackFactory;
+import feign.Param;
 import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -16,4 +17,7 @@ public interface Dc2Service {
 
     @RequestLine("GET /provider/dc")
     String consumer();
+
+    @RequestLine("GET /provider/customer/{id}")
+    Object queryCustomer(@Param("id") Long id);
 }

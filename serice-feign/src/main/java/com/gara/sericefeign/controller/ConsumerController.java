@@ -25,7 +25,7 @@ import java.util.UUID;
  * @Version: 1.0
  **/
 @RestController
-@RequestMapping(value = "feign")
+@RequestMapping(value = "feign/")
 @ApiModel(description = "消费端控制器")
 public class ConsumerController {
 
@@ -36,7 +36,7 @@ public class ConsumerController {
             commandProperties = {
                     @HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE")
             })
-    @GetMapping("feign/consumer")
+    @GetMapping("consumer")
     public String testFeign() {
         return consumerService.consumer();
     }
@@ -75,6 +75,11 @@ public class ConsumerController {
         FileDTO fileDTO = new FileDTO();
         BeanUtils.copyProperties(req, fileDTO);
         return consumerService.uploadFileWithDTO(file, fileDTO);
+    }
+
+    @GetMapping(value = "customer/{id}")
+    public Object uploadMultipartFile(@PathVariable(value = "id") Long id) {
+        return consumerService.queryRemoteCustomer(id);
     }
 
     private File multipartFile2File(MultipartFile multipartFile) {

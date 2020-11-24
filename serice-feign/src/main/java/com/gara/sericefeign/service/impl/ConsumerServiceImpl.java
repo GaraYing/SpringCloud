@@ -44,4 +44,9 @@ public class ConsumerServiceImpl implements ConsumerService {
     public String uploadFileWithDTO(MultipartFile file, FileDTO req) {
         return dcService.uploadFileWithDTO(file, req);
     }
+
+    @Override
+    public Object queryRemoteCustomer(Long id) {
+        return dc2Service.queryCustomer(id);
+    }
 }

@@ -2,6 +2,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:9002/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+    fetch-registry: true
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -21,7 +22,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
-hystrix
+hystrix:
   command:
     default:
       execution:
@@ -33,15 +34,19 @@ hystrix
 ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000
-
+# swagger配置开关
 swagger:
   enable: true
 
 feign:
+  hystrix:
+    enabled: true
   log:
     enabled: true
-  client:
-    url: http://192.168.30.192:7777
+#  client:
+# 配置调用spring-cloud-eureka-provider的FeignClient
+#    name: ${spring.application.name}
+#    url: http://192.168.30.68:5555/
 # print log
 logging:
   level:

@@ -71,7 +71,7 @@ public class EurekaClientApplication {
     public ConfigurableServletWebServerFactory webServerFactory() {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
         factory.setPort(9000);
-        factory.setBackgroundProcessorDelay(10); ;
+        factory.setBackgroundProcessorDelay(10);
         factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/notfound.html"));
         return factory;
     }

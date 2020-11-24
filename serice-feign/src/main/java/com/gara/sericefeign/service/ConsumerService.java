@@ -23,4 +23,6 @@ public interface ConsumerService {
     String uploadFileWithParams (MultipartFile multipartFile, String fileDesc);
 
     String uploadFileWithDTO(MultipartFile file, FileDTO req);
+
+    Object queryRemoteCustomer(Long id);
 }

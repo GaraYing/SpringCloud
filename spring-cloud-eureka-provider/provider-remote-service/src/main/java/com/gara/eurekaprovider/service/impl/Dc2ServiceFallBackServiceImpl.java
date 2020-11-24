@@ -17,4 +17,10 @@ public class Dc2ServiceFallBackServiceImpl implements Dc2Service {
         log.error("failed with Feign Remote:异常信息={}",this.cause.getMessage());
         return "failed with Feign Remote";
     }
+
+    @Override
+    public Object queryCustomer(Long id) {
+        log.error("failed with Feign Remote:异常信息={}",this.cause.getMessage());
+        return "failed with Feign Remote";
+    }
 }

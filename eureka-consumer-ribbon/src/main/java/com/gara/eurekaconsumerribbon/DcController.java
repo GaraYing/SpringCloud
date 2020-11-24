@@ -36,6 +36,6 @@ public class DcController {
 //        System.out.println("URL: " + url);
 //        return restTemplate.getForObject(url, String.class);
 
-        return restTemplate.getForObject("http://spring-cloud-eureka-provider/dc", String.class);
+        return restTemplate.getForObject("http://spring-cloud-eureka-provider/provider/dc", String.class);
     }
 }
