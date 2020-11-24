@@ -19,6 +19,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
@@ -35,7 +36,7 @@ import java.util.UUID;
  * @Version: 1.0
  **/
 
-//@Configuration
+@Configuration
 @Slf4j
 public class FeignConfiguration {
 //    //这个是日志的
