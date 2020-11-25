@@ -31,7 +31,10 @@ eureka:
     serviceUrl:
       #      defaultZone: http://127.0.0.1:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    instanceInfoReplicationIntervalSeconds: 10
+    instanceInfoReplicationIntervalSeconds:
+# 关闭保护机制，以确保注册中心可以将不可用的实例正确剔除，默认为true
+  server:
+    enable-self-preservation: false
 ---
 server:
   port: 9002
@@ -45,15 +48,17 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
-#    取消服务器自我注册
+#    表示是否将自己注册到Eureka Server，默认为true
     registerWithEureka: true
-#    注册中心服务器，没有必要/不需要检索服务
+#    注册中心服务器，没有必要/不需要检索服务 表示是否从Eureka Server获取注册信息，默认为true。
     fetchRegistry: true
 #   Eureka Server服务URL 用户客户端注册
     serviceUrl:
 #      defaultZone: http://127.0.0.1:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:9001/eureka/
     instanceInfoReplicationIntervalSeconds: 10
+  server:
+    enable-self-preservation: false
 ---
 server:
   port: 9001
@@ -75,3 +80,5 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:9002/eureka/
     instanceInfoReplicationIntervalSeconds: 10
+  server:
+    enable-self-preservation: false

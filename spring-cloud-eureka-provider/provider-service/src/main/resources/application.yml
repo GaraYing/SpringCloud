@@ -31,8 +31,9 @@ spring:
 #    allow-bean-definition-overriding: true # 支持bean名称覆盖，如果FeignClint 指定不同contextId可不设置该属性
 eureka:
   client:
+    fetch-registry: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:9002/eureka/,http://${eureka.instance.hostname}:9001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:9002/eureka/, http://${eureka.instance.hostname}:9001/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}

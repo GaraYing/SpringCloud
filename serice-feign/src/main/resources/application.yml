@@ -19,8 +19,8 @@ spring:
       max-request-size: 50MB
       max-file-size: 50MB
       enabled: true
-  main:
-    allow-bean-definition-overriding: true
+#  main:
+#    allow-bean-definition-overriding: true
 
 hystrix:
   command:
@@ -31,9 +31,9 @@ hystrix:
             timeoutInMilliseconds: 5000
 
 
-ribbon:
-  ReadTimeout: 5000
-  ConnectTimeout: 5000
+#ribbon:
+#  ReadTimeout: 5000
+#  ConnectTimeout: 5000
 # swagger配置开关
 swagger:
   enable: true
@@ -45,8 +45,8 @@ feign:
     enabled: true
 #  client:
 # 配置调用spring-cloud-eureka-provider的FeignClient
-#    name: ${spring.application.name}
-#    url: http://192.168.30.68:5555/
+#    name: spring-cloud-eureka-provider
+#    url: http://127.0.0.1:7777/
 # print log
 logging:
   level:

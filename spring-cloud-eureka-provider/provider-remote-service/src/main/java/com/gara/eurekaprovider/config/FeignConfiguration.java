@@ -1,10 +1,5 @@
 package com.gara.eurekaprovider.config;
 
-import com.netflix.client.config.IClientConfig;
-import com.netflix.loadbalancer.IPing;
-import com.netflix.loadbalancer.PingUrl;
-import com.netflix.loadbalancer.Server;
-import com.netflix.loadbalancer.ServerList;
 import feign.*;
 import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.Encoder;
@@ -12,20 +7,14 @@ import feign.form.spring.SpringFormEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -39,9 +28,9 @@ import java.util.UUID;
 @Configuration
 @Slf4j
 public class FeignConfiguration {
-//    //这个是日志的
+    // 打印日志
     @Bean
-    @ConditionalOnProperty(name = "feign.log.enabled",havingValue = "true",matchIfMissing = true)
+    @ConditionalOnProperty(name = "feign.log.enabled", havingValue = "true", matchIfMissing = true)
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
@@ -67,18 +56,15 @@ public class FeignConfiguration {
     // 请求连接和读取数据的超时时间(ms)
     @Bean
     public Request.Options timeoutConfiguration(){
-        return new Request.Options(5000, 30000);
+        return new Request.Options(10 * 1000, 30 * 1000);
     }
 
     @Bean
     public RequestInterceptor requestLoggingInterceptor() {
-        return new RequestInterceptor() {
-            @Override
-            public void apply(RequestTemplate template) {
-                log.info("Adding header [testHeader / testHeaderValue] to request");
-                template.header("testHeader", "testHeaderValue");
-                template.header("requestId", String.valueOf(UUID.randomUUID()));
-            }
+        return template -> {
+            log.info("Adding header [testHeader / testHeaderValue] to request");
+            template.header("testHeader", "testHeaderValue");
+            template.header("requestId", String.valueOf(UUID.randomUUID()));
         };
     }
 
