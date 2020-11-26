@@ -22,6 +22,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
   datasource:
     url: jdbc:h2:file:D:/temp/h2
     driver-class-name: org.h2.Driver
@@ -59,8 +60,13 @@ feign:
 #    url: http://192.168.30.68:7777
 logging:
   level:
-    com:
-      gara: DEBUG
+#    com:
+#      gara: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+        type.descriptor.sql.BasicBinder: TRACE
 
 
 # check for updated list of servers every 10 seconds
