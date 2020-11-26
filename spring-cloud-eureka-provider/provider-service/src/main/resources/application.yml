@@ -56,7 +56,7 @@ feign:
     enabled: true
 #  client:
 #    name: ${spring.application.name}
-#    url: ${eureka.instance.instance-id}
+#    url: http://192.168.30.68:7777
 logging:
   level:
     com:
@@ -67,4 +67,6 @@ logging:
 spring-cloud-eureka-provider:
   ribbon:
     ServerListRefreshInterval: 10000
-
+#ribbon:
+#  eureka:
+#    enabled: true

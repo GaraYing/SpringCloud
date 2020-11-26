@@ -31,10 +31,10 @@ eureka:
     serviceUrl:
       #      defaultZone: http://127.0.0.1:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    instanceInfoReplicationIntervalSeconds:
+    instanceInfoReplicationIntervalSeconds: 10
 # 关闭保护机制，以确保注册中心可以将不可用的实例正确剔除，默认为true
-  server:
-    enable-self-preservation: false
+#  server:
+#    enable-self-preservation: false
 ---
 server:
   port: 9002
@@ -57,8 +57,8 @@ eureka:
 #      defaultZone: http://127.0.0.1:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:9001/eureka/
     instanceInfoReplicationIntervalSeconds: 10
-  server:
-    enable-self-preservation: false
+#  server:
+#    enable-self-preservation: false
 ---
 server:
   port: 9001
@@ -80,5 +80,5 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:9002/eureka/
     instanceInfoReplicationIntervalSeconds: 10
-  server:
-    enable-self-preservation: false
+#  server:
+#    enable-self-preservation: false

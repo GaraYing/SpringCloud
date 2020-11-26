@@ -20,7 +20,7 @@ import java.util.List;
  * @Version: 1.0
 **/
 @Slf4j
-@RibbonClient(name="${spring.application.name}")
+//@RibbonClient(name="${spring.application.name}")
 public class RibbonConfiguration{
 
     @Value("${spring.application.name}")
