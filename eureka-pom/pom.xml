@@ -87,6 +87,18 @@
     </dependencies>
 
     <repositories>
+
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
         <repository>
             <id>maven2-release</id>
             <url>http://uk.maven.org/maven2/</url>
@@ -100,17 +112,6 @@
             </snapshots>
             <id>oss-snapshots</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
 
         <repository>
