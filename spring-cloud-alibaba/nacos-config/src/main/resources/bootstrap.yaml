@@ -1,0 +1,16 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: nacos-config
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        prefix: nacos-config
+        namespace: 065f2843-e982-4a05-8543-85d2ad9c9baa
+        file-extension: yaml
+        group: DEFAULT_GROUP
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 065f2843-e982-4a05-8543-85d2ad9c9baa
